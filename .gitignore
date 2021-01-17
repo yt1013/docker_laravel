@@ -20,6 +20,7 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 /.vagrant
+
+docker/nginx/log
 .phpunit.result.cache
 
-./docker/nginx/log/*.log
