@@ -25,6 +25,16 @@ services:
     links:
       - db
 
+  # NPM===================================================================
+  node:
+    image: node:lts
+    container_name: node
+    volumes:
+      - ./app/:/var/www/html/
+    working_dir: /var/www/html/
+    entrypoint: [ "npm" ]
+    command: [ "--help" ]
+
   # Database===================================================================
   db:
     image: mysql:8.0
