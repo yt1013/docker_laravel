@@ -33,8 +33,9 @@ class AdrControllerCommand extends Command
      * Execute the console command.
      *
      * @return mixed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function handle()
+    public function handle(): bool
     {
         $action_name_input = 'Http/Controllers/'.$this->getNameInput().'Action';
         $responder_name_input = 'Http/Responders/'.$this->getNameInput().'Responder';
@@ -50,14 +51,23 @@ class AdrControllerCommand extends Command
                 return false;
             }
 
-            $this->makeFormat($usecase_name_input, 'usecase');
+            $this->putFileClass($usecase_name_input, 'usecase');
         }
 
-        $this->makeFormat($action_name_input, 'action');
-        $this->makeFormat($responder_name_input, 'responder');
+        $this->putFileClass($action_name_input, 'action');
+        $this->putFileClass($responder_name_input, 'responder');
+
+        return true;
     }
 
-    private function checkFileExists($name_input, $method)
+    /**
+     * Check the file already exists.
+     *
+     * @param $name_input
+     * @param $method
+     * @return mixed
+     */
+    private function checkFileExists($name_input, $method): bool
     {
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
@@ -73,7 +83,14 @@ class AdrControllerCommand extends Command
         return false;
     }
 
-    private function makeFormat($name_input, $method)
+
+    /**
+     * Put built file
+     *
+     * @return mixed
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function putFIleClass($name_input, $method)
     {
         $name = $this->qualifyClass($name_input);
         $path = $this->getPath($name);
@@ -97,7 +114,7 @@ class AdrControllerCommand extends Command
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function buildControllerClass($name, $method)
+    private function buildControllerClass($name, $method): string
     {
         $stub = $this->files->get($this->getControllerStub($method));
 
@@ -106,7 +123,7 @@ class AdrControllerCommand extends Command
 
     protected function getStub()
     {
-        // 必須のため残す
+        // 必須メソッドのため残す
     }
 
     private function getControllerStub($method)
