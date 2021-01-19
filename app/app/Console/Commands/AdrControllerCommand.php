@@ -106,7 +106,7 @@ class AdrControllerCommand extends Command
 
     protected function getStub()
     {
-        // TODO: Implement getStub() method.
+        // 必須のため残す
     }
 
     private function getControllerStub($method)
