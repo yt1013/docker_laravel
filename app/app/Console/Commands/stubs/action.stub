@@ -19,7 +19,7 @@ class DummyClass extends Controller
     private $responder;
 
     /**
-     * DummyAction constructor.
+     * DummyClass constructor.
      *
      */
     public function __construct()
