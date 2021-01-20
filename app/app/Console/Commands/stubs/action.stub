@@ -4,18 +4,19 @@ namespace DummyNamespace;
 
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 
 class DummyClass extends Controller
 {
     /**
      * @var
      */
-    private $responder;
+    private $usecase;
 
     /**
      * @var
      */
-    private $usecase;
+    private $responder;
 
     /**
      * DummyAction constructor.
@@ -29,7 +30,7 @@ class DummyClass extends Controller
     /**
      *
      */
-    public function __invoke(): Response
+    public function __invoke(Request $request): Response
     {
         //
     }

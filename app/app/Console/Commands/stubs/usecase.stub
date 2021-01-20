@@ -15,9 +15,10 @@ class DummyClass
     }
 
     /**
+     * @param $parameters
      * @return Payload
      */
-    public function run(): Payload
+    public function run($parameters): Payload
     {
         //
     }
