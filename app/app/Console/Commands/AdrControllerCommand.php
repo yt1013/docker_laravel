@@ -128,6 +128,10 @@ class AdrControllerCommand extends Command
 
     private function getControllerStub($method)
     {
+        if ($method === 'action' && $this->option('usecase')) {
+            return __DIR__."/stubs/${method}_with_usecase.stub";
+        }
+
         return __DIR__."/stubs/${method}.stub";
     }
 

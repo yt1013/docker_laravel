@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 class DummyClass extends Controller
 {
     /**
+     * @var Usecase
+     */
+    private $usecase;
+
+    /**
      * @var Responder
      */
     private $responder;
@@ -17,8 +22,9 @@ class DummyClass extends Controller
      * DummyClass constructor.
      *
      */
-    public function __construct(Responder $responder)
+    public function __construct(Usecase $usecase, Responder $responder)
     {
+        $this->usecase = $usecase;
         $this->responder = $responder;
     }
 
@@ -27,6 +33,6 @@ class DummyClass extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return $this->responder->handle();
+        return $this->responder->handle($this->usecase->run());
     }
 }

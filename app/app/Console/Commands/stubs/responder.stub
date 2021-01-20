@@ -18,5 +18,7 @@ class DummyClass extends AbstractResponder
         [$payload] = $args;
 
         assert($payload instanceof Payload);
+
+        return $this->response->view();
     }
 }
