@@ -39,7 +39,7 @@ class ActionMakeCommand extends Command
     {
         $name_input = 'Http/Controllers/' . $this->getNameInput() . 'Action';
         $name = $this->qualifyClass($name_input);
-        $usecase_name_input = 'Http/Usecases/' . $this->getNameInput() . 'Usecase';
+        $usecase_name_input = 'Usecases/' . $this->getNameInput() . 'Usecase';
         $usecase_name = $this->qualifyClass($usecase_name_input);
         $responder_name_input = 'Http/Responders/' . $this->getNameInput() . 'Responder';
         $responder_name = $this->qualifyClass($responder_name_input);
