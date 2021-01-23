@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand as Command;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Symfony\Component\Console\Input\InputOption;
 
 class ActionMakeCommand extends Command
@@ -32,15 +33,15 @@ class ActionMakeCommand extends Command
      * Execute the console command.
      *
      * @return mixed
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     public function handle(): bool
     {
-        $name_input = 'Http/Controllers/'.$this->getNameInput().'Action';
+        $name_input = 'Http/Controllers/' . $this->getNameInput() . 'Action';
         $name = $this->qualifyClass($name_input);
-        $usecase_name_input = 'Http/Usecases/'.$this->getNameInput().'Usecase';
+        $usecase_name_input = 'Http/Usecases/' . $this->getNameInput() . 'Usecase';
         $usecase_name = $this->qualifyClass($usecase_name_input);
-        $responder_name_input = 'Http/Responders/'.$this->getNameInput().'Responder';
+        $responder_name_input = 'Http/Responders/' . $this->getNameInput() . 'Responder';
         $responder_name = $this->qualifyClass($responder_name_input);
 
 
@@ -50,8 +51,6 @@ class ActionMakeCommand extends Command
             return false;
         }
 
-//        dd($name, $path, $this->option('usecase'));
-
         // Next, we will generate the path to the location where this class' file should get
         // written. Then, we will build the class and make the proper replacements on the
         // stub files so that it gets the correctly formatted namespace and class name.
@@ -59,7 +58,7 @@ class ActionMakeCommand extends Command
 
         $this->files->put($path, $this->sortImports($this->buildActionClass($name, $usecase_name, $responder_name)));
 
-        $this->info($this->type.' created successfully.');
+        $this->info($this->type . ' created successfully.');
 
         return true;
     }
@@ -75,10 +74,10 @@ class ActionMakeCommand extends Command
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((! $this->hasOption('force') ||
-                ! $this->option('force')) &&
+        if ((!$this->hasOption('force') ||
+                !$this->option('force')) &&
             $this->alreadyExists($name_input)) {
-            $this->error($this->type.' already exists!');
+            $this->error($this->type . ' already exists!');
 
             return true;
         }
@@ -94,7 +93,7 @@ class ActionMakeCommand extends Command
      * @param string $responder_name
      * @return string
      *
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @throws FileNotFoundException
      */
     protected function buildActionClass(string $name, string $usecase_name, string $responder_name): string
     {
@@ -106,10 +105,10 @@ class ActionMakeCommand extends Command
     protected function getStub()
     {
         if ($this->option('usecase')) {
-            return __DIR__.'/stubs/action_with_usecase.stub.stub';
+            return __DIR__ . '/stubs/action_with_usecase.stub';
         }
 
-        return __DIR__.'/stubs/action.stub';
+        return __DIR__ . '/stubs/action.stub';
     }
 
     /**
@@ -143,9 +142,9 @@ class ActionMakeCommand extends Command
      */
     protected function replaceActionClass($stub, string $name, string $usecase_name, string $responder_name): string
     {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-        $usecase_class = str_replace($this->getNamespace($usecase_name).'\\', '', $usecase_name);
-        $responder_class = str_replace($this->getNamespace($responder_name).'\\', '', $responder_name);
+        $class = str_replace($this->getNamespace($name) . '\\', '', $name);
+        $usecase_class = str_replace($this->getNamespace($usecase_name) . '\\', '', $usecase_name);
+        $responder_class = str_replace($this->getNamespace($responder_name) . '\\', '', $responder_name);
 
         return str_replace(
             ['DummyClass', 'DummyUsecaseClass', 'DummyResponderClass'],

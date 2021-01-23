@@ -17,6 +17,7 @@ class DummyClass extends Controller
     /**
      * DummyClass constructor.
      *
+     * @param DummyResponderClass $responder
      */
     public function __construct(DummyResponderClass $responder)
     {
