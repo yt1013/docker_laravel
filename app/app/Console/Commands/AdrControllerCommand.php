@@ -63,11 +63,11 @@ class AdrControllerCommand extends Command
     /**
      * Check the file already exists.
      *
-     * @param $name_input
-     * @param $method
-     * @return mixed
+     * @param string $name_input
+     * @param string $method
+     * @return bool
      */
-    private function checkFileExists($name_input, $method): bool
+    private function checkFileExists(string $name_input, string $method): bool
     {
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
@@ -87,10 +87,12 @@ class AdrControllerCommand extends Command
     /**
      * Put built file
      *
-     * @return mixed
+     * @param string $name_input
+     * @param string $method
+     * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function putFIleClass($name_input, $method)
+    private function putFIleClass(string $name_input, string $method): void
     {
         $name = $this->qualifyClass($name_input);
         $path = $this->getPath($name);
@@ -109,24 +111,26 @@ class AdrControllerCommand extends Command
      * Build the class with the given name.
      *
      * @param string $name
-     * @param $method
+     * @param string $method
      * @return string
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    private function buildControllerClass($name, $method): string
+    private function buildControllerClass(string $name, string $method): string
     {
         $stub = $this->files->get($this->getControllerStub($method));
 
         return $this->replaceNamespace($stub, $name)->replaceClass($stub, $name);
     }
 
-    protected function getStub()
-    {
-        // 必須メソッドのため残す
-    }
-
-    private function getControllerStub($method)
+    /**
+     * Build the class with the given name.
+     *
+     * @param string $method
+     * @return string
+     *
+     */
+    private function getControllerStub(string $method): string
     {
         if ($method === 'action' && $this->option('usecase')) {
             return __DIR__."/stubs/${method}_with_usecase.stub";
@@ -140,7 +144,7 @@ class AdrControllerCommand extends Command
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions(): array
     {
         return [
             // InputOptionのコンストラクタへ渡す引数の配列を追加していく
@@ -152,5 +156,10 @@ class AdrControllerCommand extends Command
             // @param string|string[]|int|bool|null $default     オプションの初期値(オプションのモードにself::VALUE_NONE以外を指定している場合のみ)
             ['usecase', 'u', InputOption::VALUE_NONE, 'make usecase class'],
         ];
+    }
+
+    protected function getStub()
+    {
+        // 必須メソッドのため残す
     }
 }
