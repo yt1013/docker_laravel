@@ -39,6 +39,6 @@ class DummyClass extends Controller
      */
     public function __invoke(Request $request): Response
     {
-        return $this->responder->handle($this->usecase->run());
+        return $this->responder->handle($this->usecase->run($request->all()));
     }
 }
