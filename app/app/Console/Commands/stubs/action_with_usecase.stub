@@ -1,0 +1,44 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
+use DummyUsecaseNamespace\DummyUsecaseClass;
+use DummyResponderNamespace\DummyResponderClass;
+
+class DummyClass extends Controller
+{
+    /**
+     * @var DummyUsecaseClass
+     */
+    private $usecase;
+
+    /**
+     * @var DummyResponderClass
+     */
+    private $responder;
+
+    /**
+     * DummyClass constructor.
+     *
+     * @param DummyUsecaseClass $usecase
+     * @param DummyResponderClass $responder
+     *
+     */
+    public function __construct(DummyUsecaseClass $usecase, DummyResponderClass $responder)
+    {
+        $this->usecase = $usecase;
+        $this->responder = $responder;
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function __invoke(Request $request): Response
+    {
+        return $this->responder->handle($this->usecase->run($request->all()));
+    }
+}

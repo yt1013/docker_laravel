@@ -1,0 +1,25 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Usecases\Payload;
+
+class DummyClass
+{
+    /**
+     * DummyClass constructor.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
+     * @param array $parameters
+     * @return Payload
+     */
+    public function run(array $parameters): Payload
+    {
+        //
+    }
+}
