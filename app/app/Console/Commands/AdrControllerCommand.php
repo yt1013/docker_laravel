@@ -37,9 +37,15 @@ class AdrControllerCommand extends Command
      */
     public function handle(): bool
     {
-        $parameters = ['name' => $this->getNameInput(), '-u' => $this->option('usecase')];
+        $name = $this->getNameInput();
 
-        $this->call("make:action", $parameters);
+        $this->call("make:action", [
+            'name' => $name,
+            '-u' => $this->option('usecase')
+        ]);
+        $this->call("make:responder", [
+            'name' => $name
+        ]);
 
         dd('done');
 
