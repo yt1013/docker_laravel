@@ -5,11 +5,12 @@ namespace DummyNamespace;
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
+use DummyResponderNamespace\DummyResponderClass;
 
 class DummyClass extends Controller
 {
     /**
-     * @var Responder
+     * @var DummyResponderClass
      */
     private $responder;
 
@@ -17,7 +18,7 @@ class DummyClass extends Controller
      * DummyClass constructor.
      *
      */
-    public function __construct(Responder $responder)
+    public function __construct(DummyResponderClass $responder)
     {
         $this->responder = $responder;
     }
