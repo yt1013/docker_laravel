@@ -109,6 +109,7 @@
       <path value="$PROJECT_DIR$/app/vendor/justinrainbow/json-schema" />
       <path value="$PROJECT_DIR$/app/vendor/react/promise" />
       <path value="$PROJECT_DIR$/app/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/app/vendor/laravelcollective/html" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

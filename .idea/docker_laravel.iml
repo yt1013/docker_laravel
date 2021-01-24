@@ -32,6 +32,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravelcollective/html" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/league/commonmark" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/league/mime-type-detection" />

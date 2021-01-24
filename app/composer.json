@@ -12,7 +12,8 @@
         "eloquent/enumeration": "^6.0",
         "fideloper/proxy": "^4.4",
         "laravel/framework": "^6.20",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "laravelcollective/html": "6.*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.1",

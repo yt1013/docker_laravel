@@ -44,7 +44,7 @@
                                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ $user->role }}" required autocomplete="role" autofocus>
+                                    {{ Form::select('role', \App\Enums\RoleEnum::getRoleSelector(), 0, ['class' => $errors->has('role') ? 'form-control is-invalid' : 'form-control', 'id' => 'role', 'required']) }}
 
                                     @error('role')
                                     <span class="invalid-feedback" role="alert">
