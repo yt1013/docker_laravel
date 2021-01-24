@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * App\User
@@ -64,4 +64,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param array $parameters
+     * @return void
+     */
+    public function createUser(array $parameters): void
+    {
+        $this->name = $parameters['name'];
+        $this->email = $parameters['email'];
+        $this->role = $parameters['role'];
+        $this->password = Hash::make($parameters['password']);
+
+        $this->save();
+    }
+
+    /**
+     * Handle the incoming request.
+     *
+     * @param array $parameters
+     * @return void
+     */
+    public function updateUser(array $parameters): void
+    {
+        $this->name = $parameters['name'];
+        $this->email = $parameters['email'];
+        $this->role = $parameters['role'];
+
+        $this->save();
+    }
 }

@@ -20,16 +20,11 @@ class StoreController extends Controller
      */
     public function __invoke(StoreRequest $request): RedirectResponse
     {
+        $parameters = $this->makeParameter($request);
+
         DB::beginTransaction();
         try {
-            $user = new User();
-
-            $user->name = $request['name'];
-            $user->email = $request['email'];
-            $user->role = $request['role'];
-            $user->password = Hash::make($request['password']);
-
-            $user->save();
+            (new User())->createUser($parameters);
 
             DB::commit();
 
@@ -42,5 +37,19 @@ class StoreController extends Controller
         }
 
         return redirect()->route('user.index');
+    }
+
+    /**
+     * @param StoreRequest $request
+     * @return array
+     */
+    private function makeParameter(StoreRequest $request): array
+    {
+        return [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'role' => $request['role'],
+            'password' => $request['password']
+        ];
     }
 }

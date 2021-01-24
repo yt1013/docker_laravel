@@ -20,12 +20,11 @@ class UpdateController extends Controller
      */
     public function __invoke(User $user, UpdateRequest $request): RedirectResponse
     {
+        $parameters = $this->makeParameter($request);
+
         DB::beginTransaction();
         try {
-            $user->name = $request['name'];
-            $user->email = $request['email'];
-            $user->role = $request['role'];
-            $user->save();
+            $user->updateUser($parameters);
 
             DB::commit();
 
@@ -38,5 +37,18 @@ class UpdateController extends Controller
         }
 
         return redirect()->route('user.index');
+    }
+
+    /**
+     * @param UpdateRequest $request
+     * @return array
+     */
+    private function makeParameter(UpdateRequest $request): array
+    {
+        return [
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'role' => $request['role']
+        ];
     }
 }
