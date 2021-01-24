@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('auth:web')
+    ->group(function () {
+        Route::get('/user', 'User\IndexController')->name('user.index');
+        Route::get('/user/create', 'User\CreateController')->name('user.create');
+        Route::post('/user', 'User\StoreController')->name('user.store');
+    });

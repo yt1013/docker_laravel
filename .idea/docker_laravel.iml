@@ -6,8 +6,13 @@
       <sourceFolder url="file://$MODULE_DIR$/app/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/laravel-ide-helper" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/dnoegel/php-xdg-base-dir" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/doctrine/lexer" />
@@ -23,6 +28,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/hamcrest/hamcrest-php" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/laravel/ui" />
@@ -55,6 +61,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psy/psysh" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/react/promise" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/scrivo/highlight.php" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sebastian/cli-parser" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sebastian/code-unit" />
@@ -72,6 +79,8 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sebastian/type" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/seld/phar-utils" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/swiftmailer/swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/css-selector" />
@@ -80,6 +89,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/error-handler" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/event-dispatcher" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/finder" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/http-client-contracts" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/http-foundation" />

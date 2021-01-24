@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                        <ul>
+                            <li><a href="{{ route('user.index') }}">ユーザ一覧</a></li>
+                        </ul>
                 </div>
             </div>
         </div>
