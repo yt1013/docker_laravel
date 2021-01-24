@@ -21,7 +21,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth:web')
     ->group(function () {
-        Route::get('/user', 'User\IndexController')->name('user.index');
-        Route::get('/user/create', 'User\CreateController')->name('user.create');
-        Route::post('/user', 'User\StoreController')->name('user.store');
+        Route::prefix('/users')
+            ->name('user.')
+            ->namespace('User')
+            ->group(function () {
+                Route::get('/', 'IndexController')->name('index');
+                Route::get('/create', 'CreateController')->name('create');
+                Route::post('/', 'StoreController')->name('store');
+                Route::get('/{user}', 'EditController')->name('edit');
+                Route::post('/{user}', 'UpdateController')->name('update');
+        });
     });
