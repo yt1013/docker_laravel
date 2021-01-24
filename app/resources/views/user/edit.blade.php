@@ -44,7 +44,7 @@
                                 <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                                 <div class="col-md-6">
-                                    {{ Form::select('role', \App\Enums\RoleEnum::getRoleSelector(), 0, ['class' => $errors->has('role') ? 'form-control is-invalid' : 'form-control', 'id' => 'role', 'required']) }}
+                                    {{ Form::select('role', \App\Enums\RoleEnum::getRoleSelector(), \App\Enums\RoleEnum::memberBy('roleName', $user->role)->roleId(), ['class' => $errors->has('role') ? 'form-control is-invalid' : 'form-control', 'id' => 'role', 'required']) }}
 
                                     @error('role')
                                     <span class="invalid-feedback" role="alert">

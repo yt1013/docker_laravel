@@ -20,9 +20,9 @@ class RoleEnum extends AbstractMultiton
      *
      * @api
      *
-     * @return string The associated string key of this member.
+     * @return int The associated string key of this member.
      */
-    final public function roleId()
+    final public function roleId(): int
     {
         return $this->roleId;
     }
@@ -34,7 +34,7 @@ class RoleEnum extends AbstractMultiton
      *
      * @return string The associated string key of this member.
      */
-    final public function roleName()
+    final public function roleName(): string
     {
         return $this->roleName;
     }
@@ -59,6 +59,19 @@ class RoleEnum extends AbstractMultiton
     public static function getKeys(): array
     {
         return array_keys(self::members());
+    }
+
+    /**
+     * @return array
+     */
+    public static function getRoleIds(): array
+    {
+        $roleIds = [];
+        foreach (self::members() as $member) {
+            $roleIds[] = $member->roleId();
+        }
+
+        return $roleIds;
     }
 
     /**
